@@ -32,12 +32,14 @@ import 'package:flutter/material.dart';
 import 'package:jh_services/jh_services.dart';
 
 void main() {
-  setupServiceLocator(
-    baseUrl: 'https://api.example.com',  // Your base URL
-    dioHeaders: {
+   setupServiceLocator(
+    sharedPrefsConfig:SharedPrefsConfig() ,
+    connectivityConfig: ConnectivityConfig(),
+    networkConfig: NetworkConfig(baseUrl: 'https://api.example.com',
+     defaultHeaders:  {
       'Content-Type': 'application/json',
       // Other headers if necessary
-    },
+    },),
   );
   
   runApp(MyApp());
