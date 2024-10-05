@@ -17,7 +17,8 @@ Add `jh_services` to your `pubspec.yaml` file:
 ```yaml
 dependencies:
   jh_services:
-    path: path/to/jh_services  # Update with your package path
+    git:
+      url: https://github.com/Ali-tech-tech/jh_services.git  # Update with your GitHub repository URL # Update with your package path
 ```
 
 ## Usage
