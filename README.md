@@ -55,13 +55,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupServiceLocator(
-    baseUrl: 'https://api.example.com',
-    dioHeaders: {
+    sharedPrefsConfig:SharedPrefsConfig() ,
+    connectivityConfig: ConnectivityConfig(),
+    networkConfig: NetworkConfig(baseUrl: 'https://api.example.com',
+     defaultHeaders:  {
       'Content-Type': 'application/json',
-    },
+      // Other headers if necessary
+    },),
   );
-
-  await initializeServices(); // Initialize all services
   runApp(MyApp());
 }
 ```
