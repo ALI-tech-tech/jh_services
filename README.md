@@ -94,7 +94,18 @@ final response = await networkService.get('/endpoint');
 
 // Example of making a POST request
 final postResponse = await networkService.post('/endpoint', data: {'key': 'value'});
+
+// Making a POST request with FormData
+final formDataResponse = await networkService.post(
+  '/upload',
+  data: {
+    'file': await convertImageToMultipartFile(image), // Example of using FormData
+  },
+  isFormData: true,
+);
+
 ```
+
 
 #### Image Picker Service
 
