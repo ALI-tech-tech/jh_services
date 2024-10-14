@@ -10,47 +10,50 @@ void handleDioExceptions(DioException e) {
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 408)); // 408: Request Timeout
+
     case DioExceptionType.sendTimeout:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 504)); // 504: Gateway Timeout (sending data failed)
 
     case DioExceptionType.receiveTimeout:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 504)); // 504: Gateway Timeout (receiving data failed)
 
     case DioExceptionType.badCertificate:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 495)); // 495: SSL Certificate Error
 
     case DioExceptionType.cancel:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 499)); // 499: Client Closed Request (canceled)
 
     case DioExceptionType.connectionError:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 503)); // 503: Service Unavailable (connection failed)
+
     case DioExceptionType.unknown:
       throw ServerException(
           errorModel: ErrorModel(
               message: e.message!,
               error: e.error.toString(),
-              statusCode: 1000));
+              statusCode: 520)); // 520: Unknown Error (catch-all for unknown)
+
     case DioExceptionType.badResponse:
       switch (e.response?.statusCode) {
         case 400: //Bad request

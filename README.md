@@ -106,7 +106,39 @@ final formDataResponse = await networkService.post(
 );
 
 ```
+## Exception Handling in `jh_services`
 
+The `jh_services` package provides a robust error-handling mechanism when making network requests using Dio. Each type of network error throws a `ServerException`, which contains details such as an error message, the specific error type, and a status code.
+
+### Error Handling
+
+The following table outlines the status codes returned for each `DioExceptionType` in case of an error:
+
+| Dio Exception Type                   | Status Code | Description                                                |
+| ------------------------------------- | ----------- | ---------------------------------------------------------- |
+| `DioExceptionType.connectionTimeout`  | 408         | The request timed out while connecting to the server.       |
+| `DioExceptionType.sendTimeout`        | 504         | The request timed out while sending data to the server.     |
+| `DioExceptionType.receiveTimeout`     | 504         | The request timed out while receiving data from the server. |
+| `DioExceptionType.badCertificate`     | 495         | The SSL certificate is invalid.                             |
+| `DioExceptionType.cancel`             | 499         | The client canceled the request.                            |
+| `DioExceptionType.connectionError`    | 503         | There was a network connection error.                       |
+| `DioExceptionType.unknown`            | 520         | An unknown error occurred.                                  |
+| `DioExceptionType.badResponse`        | Varies      | Depends on the status code from the server (e.g., 400, 401, 403, 404, 409, 422, 504). |
+
+### Example of Handling Exceptions
+
+When you make a network request and an error occurs, a `ServerException` is thrown, which you can catch and process as follows:
+
+```dart
+try {
+  final response = await networkService.get('/endpoint');
+  print(response);
+} on ServerException catch (e) {
+  // Handle the exception
+  print('Error: ${e.errorModel.message}');
+  print('Status Code: ${e.errorModel.statusCode}');
+}
+```
 
 #### Image Picker Service
 
