@@ -1,7 +1,7 @@
 name: jh_services
-description: "A new Flutter package project."
+description: "Flutter package that provides a collection of services."
 version: 0.0.1
-homepage:
+homepage: https://github.com/ALI-tech-tech/jh_services
 
 # environment:
 #   sdk: ^3.5.3
