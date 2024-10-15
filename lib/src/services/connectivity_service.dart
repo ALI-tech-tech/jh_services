@@ -16,8 +16,8 @@ class ConnectivityService implements BaseService {
 
   /// Get the connectivity status as a stream
   Stream<bool> get connectionStream {
-    return _connectionChecker.onStatusChange.map((status) {
-      return status == _connectionChecker.hasInternetAccess;
+    return _connectionChecker.onStatusChange.map((status)  {
+      return status.name ==  _connectionChecker.hasInternetAccess.toString();
     });
   }
 

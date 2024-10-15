@@ -31,7 +31,7 @@ class NetworkService implements BaseService {
           // Modify response if needed
           return handler.next(response);
         },
-        onError: (DioError e, handler) {
+        onError: (DioException e, handler) {
           // Handle errors globally
           return handler.next(e);
         },
