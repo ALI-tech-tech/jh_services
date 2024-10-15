@@ -1,5 +1,5 @@
 name: jh_services
-version: 0.0.2
+version: 0.0.3
 description: A lightweight service package for Flutter to handle network requests, local storage, and connectivity seamlessly with best practices.
 homepage: https://github.com/ALI-tech-tech/jh_services
 repository: https://github.com/ALI-tech-tech/jh_services
