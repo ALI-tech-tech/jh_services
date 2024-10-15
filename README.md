@@ -173,10 +173,7 @@ final connectivityService = serviceLocator<ConnectivityService>();
 // Example of checking current connectivity status
 final isConnected = await connectivityService.isConnected();
 
-// Listening to connectivity changes
-connectivityService.connectionStream.listen((isConnected) {
-  print('Connected: $isConnected');
-});
+
 ```
 
 ## License
