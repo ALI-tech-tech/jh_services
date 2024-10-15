@@ -78,7 +78,7 @@ final sharedPrefsService = serviceLocator<SharedPrefsService>();
 await sharedPrefsService.saveString('key', 'value');
 
 // Example of retrieving a value
-String? value = await sharedPrefsService.getString('key');
+String? value =  sharedPrefsService.getString('key');
 ```
 
 #### Network Service
