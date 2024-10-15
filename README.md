@@ -1,4 +1,4 @@
-# jh_services 0.0.1
+# jh_services 0.0.2
 
 `jh_services` is a Flutter package that provides a collection of services for handling common tasks in your Flutter applications, such as shared preferences, network requests, image and file picking, and checking internet connectivity.
 
@@ -16,7 +16,7 @@ Add `jh_services` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  jh_services: ^0.0.1
+  jh_services: ^0.0.2
 ```
 
 ## Usage
