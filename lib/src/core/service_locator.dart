@@ -32,7 +32,8 @@ Future<void> setupServiceLocator({
   );
   serviceLocator
       .registerLazySingleton<ImagePickerService>(() => ImagePickerService());
-      serviceLocator.registerLazySingleton<FilePickerService>(() => FilePickerService());
+  serviceLocator
+      .registerLazySingleton<FilePickerService>(() => FilePickerService());
   // Initialize all services
   await initializeAllServices();
 }

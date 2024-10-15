@@ -3,8 +3,8 @@ import 'package:image_picker/image_picker.dart';
 
 /// Converts an image file to a MultipartFile for API upload.
 ///
-/// This function takes an image file selected by the user via the 
-/// Image Picker, creates a MultipartFile from the file, and prepares 
+/// This function takes an image file selected by the user via the
+/// Image Picker, creates a MultipartFile from the file, and prepares
 /// it for uploading to an API.
 ///
 /// Parameters:

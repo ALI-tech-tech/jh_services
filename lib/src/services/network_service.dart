@@ -82,7 +82,6 @@ class NetworkService implements BaseService {
     }
   }
 
-  
   Future post(String path,
       {data,
       Map<String, dynamic>? queryParameters,

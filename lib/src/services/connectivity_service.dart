@@ -13,8 +13,4 @@ class ConnectivityService implements BaseService {
   Future<bool> isConnected() async {
     return await _connectionChecker.hasInternetAccess;
   }
-
-
-
-
 }
