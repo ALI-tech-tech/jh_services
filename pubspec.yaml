@@ -14,12 +14,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  dio: '>=4.0.0 <5.7.0'
-  shared_preferences: '>=2.0.0 <2.3.2'
-  get_it: '>=7.0.0 <8.0.0'
-  image_picker: '>=1.0.0 <1.1.2'
-  file_picker: '>=8.0.0 <8.1.2'
-  internet_connection_checker_plus: '>=2.0.0 <2.5.2'
+  dio: '>4.0.0 <=5.7.0'
+  shared_preferences: '>2.0.0 <=2.3.2'
+  get_it: '>7.0.0 <=8.0.0'
+  image_picker: '>1.0.0 <=1.1.2'
+  file_picker: '>8.0.0 <=8.1.2'
+  internet_connection_checker_plus: '>2.0.0 <=2.5.2'
 
 dev_dependencies:
   flutter_test:
