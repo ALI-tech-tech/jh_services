@@ -1,4 +1,4 @@
-# jh_services 0.0.4
+# jh_services 0.1.0
 
 `jh_services` is a Flutter package that provides a collection of services for handling common tasks in your Flutter applications, such as shared preferences, network requests, image and file picking, and checking internet connectivity.
 
@@ -16,7 +16,7 @@ Add `jh_services` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  jh_services: ^0.0.4
+  jh_services: ^0.1.0
 ```
 
 ## Usage
@@ -80,6 +80,17 @@ await sharedPrefsService.saveString('key', 'value');
 // Example of retrieving a value
 String? value = sharedPrefsService.getString('key');
 ```
+  - **New Methods**:
+    - `saveString(String key, String value)`: Save a String value under a specific key.
+    - `saveInt(String key, int value)`: Save an integer value.
+    - `saveDouble(String key, double value)`: Save a double value.
+    - `saveBool(String key, bool value)`: Save a boolean value.
+    - `getString(String key)`: Retrieve a String value by key.
+    - `getInt(String key)`: Retrieve an integer value.
+    - `getDouble(String key)`: Retrieve a double value.
+    - `getBool(String key)`: Retrieve a boolean value.
+    - `remove(String key)`: Remove a value associated with a specific key.
+    - `contains(String key)`: Check if a value exists for the given key.
 
 #### Network Service
 

@@ -35,7 +35,7 @@ class FilePickerService implements BaseService {
         type: allowedExtensions != null ? FileType.custom : FileType.any,
         allowedExtensions: allowedExtensions,
       );
-
+   
       if (result != null && result.files.isNotEmpty) {
         return result.files
             .map((file) => file.path!)

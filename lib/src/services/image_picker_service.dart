@@ -12,10 +12,9 @@ class ImagePickerService implements BaseService {
   /// Pick an image from the gallery
   Future<XFile?> pickImageFromGallery() async {
     try {
-      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-      return pickedFile;
+      return await _picker.pickImage(source: ImageSource.gallery);
     } catch (e) {
-      // Handle errors (e.g., user denied permission)
+      print("Error picking image from gallery: $e");
       return null;
     }
   }
@@ -23,10 +22,9 @@ class ImagePickerService implements BaseService {
   /// Capture an image from the camera
   Future<XFile?> pickImageFromCamera() async {
     try {
-      final pickedFile = await _picker.pickImage(source: ImageSource.camera);
-      return pickedFile;
+      return await _picker.pickImage(source: ImageSource.camera);
     } catch (e) {
-      // Handle errors (e.g., user denied permission)
+      print("Error capturing image from camera: $e");
       return null;
     }
   }
@@ -34,10 +32,29 @@ class ImagePickerService implements BaseService {
   /// Pick multiple images from the gallery
   Future<List<XFile>?> pickMultipleImages() async {
     try {
-      final pickedFiles = await _picker.pickMultiImage();
-      return pickedFiles;
+      return await _picker.pickMultiImage();
     } catch (e) {
-      // Handle errors (e.g., user denied permission)
+      print("Error picking multiple images: $e");
+      return null;
+    }
+  }
+
+  /// Pick a video from the gallery
+  Future<XFile?> pickVideoFromGallery() async {
+    try {
+      return await _picker.pickVideo(source: ImageSource.gallery);
+    } catch (e) {
+      print("Error picking video from gallery: $e");
+      return null;
+    }
+  }
+
+  /// Capture a video from the camera
+  Future<XFile?> pickVideoFromCamera() async {
+    try {
+      return await _picker.pickVideo(source: ImageSource.camera);
+    } catch (e) {
+      print("Error capturing video from camera: $e");
       return null;
     }
   }

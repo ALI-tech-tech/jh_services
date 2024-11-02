@@ -39,7 +39,7 @@ class NetworkService implements BaseService {
     );
   }
 
-  Future delete(String path,
+  Future<dynamic> delete(String path,
       {data,
       Map<String, dynamic>? queryParameters,
       bool isFormData = false}) async {
@@ -53,7 +53,7 @@ class NetworkService implements BaseService {
     }
   }
 
-  Future get(
+  Future<dynamic> get(
     String path, {
     data,
     Map<String, dynamic>? queryParameters,
@@ -68,7 +68,7 @@ class NetworkService implements BaseService {
     }
   }
 
-  Future patch(String path,
+  Future<dynamic> patch(String path,
       {data,
       Map<String, dynamic>? queryParameters,
       bool isFormData = false}) async {
@@ -82,7 +82,7 @@ class NetworkService implements BaseService {
     }
   }
 
-  Future post(String path,
+  Future<dynamic> post(String path,
       {data,
       Map<String, dynamic>? queryParameters,
       bool isFormData = false}) async {
