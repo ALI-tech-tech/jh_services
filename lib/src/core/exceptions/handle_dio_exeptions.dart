@@ -84,6 +84,7 @@ void handleDioExceptions(DioException e) {
       }
 
     case DioExceptionType.unknown:
+    default:
       throw ServerException(
         errorModel: ErrorModel(
           message: e.message ?? 'An unknown network error occurred',

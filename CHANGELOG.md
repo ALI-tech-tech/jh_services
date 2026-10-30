@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1] - 2026-10-30
+
+### Fixed
+- **Static Analysis & Pattern Matching**: Added exhaustive `default` fallback in `handleDioExceptions` to gracefully handle `DioExceptionType.transformTimeout` and any future `DioExceptionType` additions.
+- **Dependency Upgrades**: Upgraded `file_picker` to `^13.3.0`, `get_it` to `^9.3.0`, `internet_connection_checker_plus` to `^3.1.2`, and `flutter_lints` to `^6.0.0` for full pub.dev pana compatibility.
+- **FilePickerService**: Updated to modern `FilePicker` static API (`pickFile`, `pickFiles`) across all platforms.
+- **Platform Support**: Eliminated transitive dependency conflicts, ensuring full support across Android, iOS, Web, macOS, Windows, and Linux.
+
 ## [0.2.0] - 2026-10-30
 
 ### Changed

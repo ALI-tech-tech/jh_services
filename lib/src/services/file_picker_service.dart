@@ -14,15 +14,11 @@ class FilePickerService implements BaseService {
   /// if you need web-compatible file bytes and metadata.
   Future<String?> pickSingleFile({List<String>? allowedExtensions}) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
+      final file = await FilePicker.pickFile(
         type: allowedExtensions != null ? FileType.custom : FileType.any,
         allowedExtensions: allowedExtensions,
       );
-
-      if (result != null && result.files.isNotEmpty) {
-        return result.files.single.path;
-      }
-      return null;
+      return file?.path;
     } catch (_) {
       return null;
     }
@@ -36,17 +32,13 @@ class FilePickerService implements BaseService {
     List<String>? allowedExtensions,
   }) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
+      final files = await FilePicker.pickFiles(
         type: allowedExtensions != null ? FileType.custom : FileType.any,
         allowedExtensions: allowedExtensions,
       );
 
-      if (result != null && result.files.isNotEmpty) {
-        return result.files
-            .map((file) => file.path)
-            .whereType<String>()
-            .toList();
+      if (files.isNotEmpty) {
+        return files.map((file) => file.path).whereType<String>().toList();
       }
       return null;
     } catch (_) {
@@ -58,19 +50,12 @@ class FilePickerService implements BaseService {
   /// contains both metadata and bytes across mobile, desktop, and web.
   Future<PlatformFile?> pickFileDetails({
     List<String>? allowedExtensions,
-    bool withData = true,
   }) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
+      return await FilePicker.pickFile(
         type: allowedExtensions != null ? FileType.custom : FileType.any,
         allowedExtensions: allowedExtensions,
-        withData: withData,
       );
-
-      if (result != null && result.files.isNotEmpty) {
-        return result.files.single;
-      }
-      return null;
     } catch (_) {
       return null;
     }
@@ -80,20 +65,13 @@ class FilePickerService implements BaseService {
   /// contain metadata and bytes across mobile, desktop, and web.
   Future<List<PlatformFile>?> pickMultipleFileDetails({
     List<String>? allowedExtensions,
-    bool withData = true,
   }) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
+      final files = await FilePicker.pickFiles(
         type: allowedExtensions != null ? FileType.custom : FileType.any,
         allowedExtensions: allowedExtensions,
-        withData: withData,
       );
-
-      if (result != null && result.files.isNotEmpty) {
-        return result.files;
-      }
-      return null;
+      return files.isNotEmpty ? files : null;
     } catch (_) {
       return null;
     }

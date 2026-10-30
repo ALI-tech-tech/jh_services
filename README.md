@@ -24,7 +24,7 @@ Add `jh_services` to your project's `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  jh_services: ^0.2.0
+  jh_services: ^0.2.1
 ```
 
 Then run:
