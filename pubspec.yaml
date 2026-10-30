@@ -1,33 +1,34 @@
 name: jh_services
-version: 0.1.1
+version: 0.2.0
 description: A lightweight service package for Flutter to handle network requests, local storage, and connectivity seamlessly with best practices.
 homepage: https://github.com/ALI-tech-tech/jh_services
 repository: https://github.com/ALI-tech-tech/jh_services
+issue_tracker: https://github.com/ALI-tech-tech/jh_services/issues
 
-example: example/example.dart
-
+topics:
+  - services
+  - network
+  - storage
+  - dio
+  - connectivity
 
 environment:
-  sdk: ">=2.17.0 <4.0.0" # Flutter 3.0.0 requires at least Dart 2.17.0
-  flutter: ">=3.0.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  dio: '5.7.0'
-  shared_preferences: '2.3.2'
-  get_it: '8.0.2'
-  image_picker: '1.1.2'
-  file_picker: '8.1.3'
-  internet_connection_checker_plus: '2.5.2'
+  dio: ^5.7.0
+  shared_preferences: ^2.3.2
+  get_it: ^8.0.2
+  image_picker: ^1.1.2
+  file_picker: ^8.1.3
+  internet_connection_checker_plus: ^2.5.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  
-
+  flutter_lints: ^5.0.0
 
 flutter:
-
-  

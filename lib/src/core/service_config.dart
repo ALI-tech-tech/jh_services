@@ -1,13 +1,21 @@
 // lib/src/core/service_config.dart
 
-/// Configuration for NetworkService.
+/// Configuration settings for [NetworkService].
 class NetworkConfig {
+  /// Base endpoint URL for all network requests.
   final String baseUrl;
+
+  /// Default HTTP headers included with every request.
   final Map<String, String>? defaultHeaders;
+
+  /// Connection timeout in milliseconds. Default is 5000ms.
   final int connectTimeout;
+
+  /// Receive timeout in milliseconds. Default is 3000ms.
   final int receiveTimeout;
 
-  NetworkConfig({
+  /// Creates a new [NetworkConfig] instance.
+  const NetworkConfig({
     required this.baseUrl,
     this.defaultHeaders,
     this.connectTimeout = 5000,
@@ -15,14 +23,14 @@ class NetworkConfig {
   });
 }
 
-/// Configuration for SharedPrefsService.
-/// (If any specific configurations are needed in the future)
+/// Configuration options for [SharedPrefsService].
 class SharedPrefsConfig {
-  // Add fields if needed
+  /// Creates a new [SharedPrefsConfig] instance.
+  const SharedPrefsConfig();
 }
 
-/// Configuration for ConnectivityService.
-/// (If any specific configurations are needed in the future)
+/// Configuration options for [ConnectivityService].
 class ConnectivityConfig {
-  // Add fields if needed
+  /// Creates a new [ConnectivityConfig] instance.
+  const ConnectivityConfig();
 }

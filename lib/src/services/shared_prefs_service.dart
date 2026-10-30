@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../core/base_service.dart';
 
+/// Service for managing local persistent key-value storage using [SharedPreferences].
 class SharedPrefsService implements BaseService {
   SharedPreferences? _prefs;
 

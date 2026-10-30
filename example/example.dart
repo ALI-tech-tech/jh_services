@@ -4,31 +4,37 @@ import 'package:jh_services/jh_services.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Setup the service locator
-  setupServiceLocator(
-    sharedPrefsConfig: SharedPrefsConfig(),
-    connectivityConfig: ConnectivityConfig(),
-    networkConfig: NetworkConfig(
-      baseUrl:
-          "https://jsonplaceholder.typicode.com", // Fake API for example purposes
+  // Setup the service locator with configurations
+  await setupServiceLocator(
+    sharedPrefsConfig: const SharedPrefsConfig(),
+    connectivityConfig: const ConnectivityConfig(),
+    networkConfig: const NetworkConfig(
+      baseUrl: 'https://jsonplaceholder.typicode.com', // Demo mock API
     ),
   );
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
+/// The example application widget.
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      title: 'jh_services Example',
       home: MyHomePage(),
     );
   }
 }
 
+/// The main interactive home page demonstrating jh_services.
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -48,51 +54,77 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _checkConnectivity() async {
     isConnected = await connectivityService.isConnected();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _fetchApiData() async {
     try {
-      final response =
-          await networkService.get('/posts/1'); // Fetching fake data
-      apiData = response['title']; // Assuming the response has a 'title' field
+      final response = await networkService.get('/posts/1');
+      if (response is Map<String, dynamic>) {
+        apiData = response['title']?.toString();
+      } else {
+        apiData = response?.toString();
+      }
     } on ServerException catch (e) {
-      apiData = e.errorModel.message;
+      apiData = 'Error: ${e.errorModel.message}';
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _saveData() async {
     await sharedPrefsService.saveString('exampleKey', 'exampleValue');
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Saved "exampleValue" to SharedPrefs!')),
+      );
+    }
   }
 
   void _getData() {
-    String? value = sharedPrefsService.getString('exampleKey');
-    print('Saved value: $value');
+    final String? value = sharedPrefsService.getString('exampleKey');
+    debugPrint('Saved value: $value');
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Retrieved from storage: $value')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('jh_services Example')),
+      appBar: AppBar(title: const Text('jh_services Example')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                'Connectivity Status: ${isConnected ? "Connected" : "Not Connected"}'),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _saveData,
-              child: Text('Save Data'),
-            ),
-            ElevatedButton(
-              onPressed: _getData,
-              child: Text('Retrieve Data'),
-            ),
-            SizedBox(height: 20),
-            Text('API Data: ${apiData ?? "Loading..."}'),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Connectivity Status: ${isConnected ? "Connected" : "Not Connected"}',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _saveData,
+                child: const Text('Save Data'),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: _getData,
+                child: const Text('Retrieve Data'),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'API Data: ${apiData ?? "Loading..."}',
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
